@@ -25,18 +25,18 @@
 #
 class squid3 (
   # Options are in the same order they appear in squid.conf
-  $http_port            = [ '3128' ],
-  $acl                  = [],
-  $http_access          = [],
-  $icp_access           = [],
-  $tcp_outgoing_address = [],
-  $cache_mem            = '256 MB',
-  $cache_dir            = [],
-  $cache                = [],
-  $via                  = 'on',
-  $ignore_expect_100    = 'off',
-  $cache_mgr            = 'root',
-  $forwarded_for        = 'on',
+  $http_port                     = [ '3128' ],
+  $acl                           = [],
+  $http_access                   = [],
+  $icp_access                    = [],
+  $tcp_outgoing_address          = [],
+  $cache_mem                     = '256 MB',
+  $cache_dir                     = [],
+  $cache                         = [],
+  $via                           = 'on',
+  $ignore_expect_100             = 'off',
+  $cache_mgr                     = 'root',
+  $forwarded_for                 = 'on',
   $client_persistent_connections = 'on',
   $server_persistent_connections = 'on',
   $maximum_object_size           = '4096 KB',
@@ -44,6 +44,7 @@ class squid3 (
   $config_hash                   = {},
   $refresh_patterns              = [],
   $template                      = 'long',
+  $ensure                        = installed,
 ) inherits ::squid3::params {
 
   $use_template = $template ? {
@@ -57,7 +58,10 @@ class squid3 (
   }
 
 
-  package { 'squid3_package': ensure => installed, name => $package_name }
+  package { 'squid3_package':
+    ensure => "${ensure}",
+    name   => $package_name
+  }
 
   service { 'squid3_service':
     enable    => true,
