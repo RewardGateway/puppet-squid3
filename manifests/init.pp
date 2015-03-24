@@ -45,8 +45,8 @@ class squid3 (
   $refresh_patterns              = [],
   $template                      = 'long',
   $ensure                        = installed,
-  $package_name                  = squid3::params::package_name,
-  $package_common_name           = squid3::params::package_common_name,
+  $package_name                  = $squid3::params::package_name,
+  $package_common_name           = $squid3::params::package_common_name,
 ) inherits ::squid3::params {
 
   $use_template = $template ? {
