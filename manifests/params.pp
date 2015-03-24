@@ -5,9 +5,11 @@ class squid3::params {
   case $::osfamily {
     'RedHat': {
       if $::operatingsystemrelease < 6 {
-        $package_name = 'squid3'
+        $package_common_name = 'squid3-common'
+        $package_name        = 'squid3'
       } else {
-        $package_name = 'squid'
+        $package_common_name = 'squid-common'
+        $package_name        = 'squid'
       }
       $service_name  = 'squid'
       $config_file   = '/etc/squid/squid.conf'
@@ -15,18 +17,20 @@ class squid3::params {
       $coredump_dir  = '/var/spool/squid'
     }
     'Debian', 'Ubuntu': {
-      $package_name  = 'squid3'
-      $service_name  = 'squid3'
-      $config_file   = '/etc/squid3/squid.conf'
-      $log_directory = '/var/log/squid3'
-      $coredump_dir  = '/var/spool/squid3'
+      $package_common_name = 'squid3-common'
+      $package_name        = 'squid3'
+      $service_name        = 'squid3'
+      $config_file         = '/etc/squid3/squid.conf'
+      $log_directory       = '/var/log/squid3'
+      $coredump_dir        = '/var/spool/squid3'
     }
     default: {
-      $package_name  = 'squid'
-      $service_name  = 'squid'
-      $config_file   = '/etc/squid/squid.conf'
-      $log_directory = '/var/log/squid'
-      $coredump_dir  = '/var/spool/squid'
+      $package_common_name = 'squid-common'
+      $package_name        = 'squid'
+      $service_name        = 'squid'
+      $config_file         = '/etc/squid/squid.conf'
+      $log_directory       = '/var/log/squid'
+      $coredump_dir        = '/var/spool/squid'
     }
   }
 

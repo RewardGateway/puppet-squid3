@@ -57,10 +57,14 @@ class squid3 (
     fail('$config_hash does not (yet) work with the "long" template!')
   }
 
-
+  package { 'squid3_package_common':
+    ensure => "${ensure}",
+    name   => $package_common_name,
+  }
+  ->
   package { 'squid3_package':
     ensure => "${ensure}",
-    name   => $package_name
+    name   => $package_name,
   }
 
   service { 'squid3_service':
