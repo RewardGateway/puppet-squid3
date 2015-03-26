@@ -79,7 +79,7 @@ class squid3 (
   }
 
   file { $config_file:
-    require => Package['squid3_package'],
+    #require => Package['squid3_package'],
     notify  => Service['squid3_service'],
     content => template($use_template),
   }
