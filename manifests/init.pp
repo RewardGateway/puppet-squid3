@@ -75,7 +75,7 @@ class squid3 (
     name      => $service_name,
     ensure    => running,
     hasstatus => true,
-    require   => Package['squid3_package'],
+    #require   => Package['squid3_package'],
   }
 
   file { $config_file:
