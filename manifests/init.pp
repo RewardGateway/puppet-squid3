@@ -59,15 +59,16 @@ class squid3 (
     fail('$config_hash does not (yet) work with the "long" template!')
   }
 
-  package { 'squid3_package_common':
-    ensure => "${ensure}",
-    name   => $package_common_name,
-  }
-  ->
-  package { 'squid3_package':
-    ensure => "${ensure}",
-    name   => $package_name,
-  }
+  # TODO : reactive package management when version with --ssl and --ssl-crtd are available
+  #package { 'squid3_package_common':
+  #  ensure => "${ensure}",
+  #  name   => $package_common_name,
+  #}
+  #->
+  #package { 'squid3_package':
+  #  ensure => "${ensure}",
+  #  name   => $package_name,
+  #}
 
   service { 'squid3_service':
     enable    => true,
