@@ -45,8 +45,13 @@ class squid3 (
   $refresh_patterns              = [],
   $template                      = 'long',
   $ensure                        = installed,
-  $package_name                  = $squid3::params::package_name,
-  $package_common_name           = $squid3::params::package_common_name,
+  $package_name                  = $::squid3::params::package_name,
+  $package_common_name           = $::squid3::params::package_common_name,
+  $service_enable                = $::squid3::params::service_enable,
+  $service_name                  = $::squid3::params::service_name,
+  $config_file                   = $::squid3::params::config_file,
+  $log_directory                 = $::squid3::params::log_directory,
+  $coredump_dir                  = $::squid3::params::coredump_dir,
 ) inherits ::squid3::params {
 
   $use_template = $template ? {
