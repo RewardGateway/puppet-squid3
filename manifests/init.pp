@@ -52,6 +52,9 @@ class squid3 (
   $config_file                   = $::squid3::params::config_file,
   $log_directory                 = $::squid3::params::log_directory,
   $coredump_dir                  = $::squid3::params::coredump_dir,
+  $access_log                    = $::squid3::params::access_log,
+  $cache_log                     = $::squid3::params::cache_log,
+  $cache_store_log               = $::squid3::params::cache_store_log,
 ) inherits ::squid3::params {
 
   $use_template = $template ? {
